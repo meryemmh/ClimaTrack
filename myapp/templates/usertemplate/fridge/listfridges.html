@@ -1,0 +1,62 @@
+{% extends 'ubase.html' %}
+{% block style %}
+<style>
+.one{
+    width:96.3667px;
+}
+.two{
+    width:289.117px;
+}
+.three{
+   width:198.133px;
+}
+.four{
+    
+}
+</style>
+
+
+{% endblock %}
+{% block body %}
+     {% if messages %}
+<ul class="messages mt-5 text-center">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        <div class="message alert alert-success">
+                <strong> + ( 1 ) {{message}} </strong> 
+                
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="listfridges mt-5 " id="table-wrapper" >
+        <table class="table table-bordered" id="table-head">
+           <thead >
+            <tr>
+                <td class="one">id</td>
+                <td class="two">Fridge Name</td>
+                <td class="three">Location</td>
+                <td class="four">Actions</td>
+                
+            </tr>
+            </thead>
+        </table>
+        <div id="table-wrapper-scroll">
+       
+        <table class="table table-bordered table-hover cursor-pointer">
+            <tbody class="table-wrapper-scroll-y ">
+                {% for i in fridges %}
+                    <tr>
+                         <td class="one"> {{ i.id }}</td>
+                         <td class="two"> {{ i.nom }} </td>
+                         <td class="three"> {{ i.location }} </td>
+                         <td class="four"> <a href="/editfridge/{{ i.id }} " class="text-warning"><button class="btn btn-warning">Edit</button></a> <a href="/deletefridge/{{i.id}}">  <button class="btn btn-danger">Delete</button></a> </td>
+                     </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         </div>
+    </div>
+
+{% endblock %}

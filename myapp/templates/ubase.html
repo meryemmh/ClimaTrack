@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  {% load static %}
+    <link rel="stylesheet" href="{% static './assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static './assets/vendor/animate/animate.css' %}" />
+    <link rel="stylesheet" href="{% static './assets/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static './assets/css/maicons.css' %}" />
+    <link rel="stylesheet" href="{% static './assets/vendor/owl-carousel/css/owl.carousel.css' %}" />
+    <link rel="stylesheet" href="{% static './assets/css/theme.css' %}" />
+  
+   <title>{% block title %}MySpace - DigitalSolutions{% endblock %}</title>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    -->
+   
+    {% block style %}
+    {% endblock %}
+    
+
+  </head>
+
+  <body>
+    <!---Nav bar--->
+
+     <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-float">
+      <div class="container">
+        <a href="{% url 'home' %}" class="navbar-brand"> Digital<span class="text-primary">Solutions.</span></a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarContent">
+          <ul class="navbar-nav ml-lg-4 pt-3 pt-lg-0">
+            <li class="nav-item active">
+              <a href="{% url 'home' %}" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'about' %}" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'services' %}" class="nav-link">Services</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+            </li>
+             {% if request.user.is_authenticated %}
+           <li class="nav-item">
+              <a href="{% url 'userspace' %}" class="nav-link">My Space</a>
+            </li>
+             {% endif %}
+          </ul>
+         
+          <div class="ml-auto">
+         
+            {% if request.user.is_authenticated %}
+               <a href="{% url 'logout' %}" class="btn btn-outline rounded-pill">Welcome <span class="username">{{request.user.username}}</span> / Log Out</a>
+            {% else %}
+             <a href="{% url 'login' %}" class="btn btn-outline rounded-pill">Log In / Sign Up</a>
+            {% endif %}
+             </div>
+         
+        </div>
+      </div>
+    </nav>
+
+   {% block section %} {% endblock %}
+  </header>
+
+    <!---End Nav bar--->
+    <div class="mainimg">
+
+    <div class="container-fluid contentu">
+      <div class="row">
+          <div class="col-md-12 barrtop" >  </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-3 sidenav">
+
+          <div class="list-group">
+                     <a href="#UserSubMenu" data-toggle="collapse" aria-expanded="false" class="list-group-item lheader list-group-item-action dropdown-toggle">User Settings</a>
+                        <ul class="collapse list-group " id="UserSubMenu">
+                          <li><a href="{% url 'supsettings' %}" class="list-group-item l list-group-item-action">New Settings</a></li>
+                          <li><a href="{% url 'csettings' %}" class="list-group-item l list-group-item-action">Current Settings</a></li>
+
+                        </ul>
+                    <a href="#FridgeSubMenu" data-toggle="collapse" aria-expanded="false" class="list-group-item lheader list-group-item-action dropdown-toggle">Fridge</a>
+                        <ul class="collapse list-group " id="FridgeSubMenu">
+                          <li><a href="{% url 'addfridge' %}" class="list-group-item l list-group-item-action " >Add Fridge</a></li>
+                          <li><a href="{% url 'listfridges' %}" class="list-group-item l list-group-item-action">List Fridges</a></li>
+
+                        </ul>
+
+                    <a href="#AssetSubMenu" data-toggle="collapse" aria-expanded="false" class="list-group-item lheader list-group-item-action dropdown-toggle">Asset</a>
+                        <ul class="collapse list-group " id="AssetSubMenu">
+                         <li><a href="{% url 'adddevice' %}" class="list-group-item l list-group-item-action">Add Device</a></li>
+
+                           <li><a href="{% url 'deviceslist' %}" class="list-group-item l list-group-item-action">Devices List</a></li>
+
+                             </ul>
+
+
+
+          </div>
+
+        </div>
+        <div class="col-md-9 leftnav">
+              {% block body %}
+
+              {% endblock %}
+        
+        </div>
+      </div>
+    </div>
+
+
+
+</div>
+ <footer class="page-footer mt-5">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-3 py-3">
+          <h3>Digital<span class="text-primary">Solutions.</span></h3>
+          <p>Optimal Solution to manage your devices remotly .</p>
+
+          <p><a href="#" >digitalsolutions@mail.com</a></p>
+          <p><a href="#">+212 5 36 40 25 52</a></p>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Quick Links</h5>
+          <ul class="footer-menu">
+            <li><a href="#">How it works</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Report a Bug</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>About Us</h5>
+          <ul class="footer-menu">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Our Teams</a></li>
+            <li><a href="#">Testimonials</a></li>
+            <li><a href="#">News & Press</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Subscribe</h5>
+          <form action="#">
+            <input type="text" class="form-control" placeholder="Enter your mail..">
+          </form>
+
+          <div class="sosmed-button mt-4">
+            <a href="#"><span class="mai-logo-facebook-f"></span></a>
+            <a href="#"><span class="mai-logo-twitter"></span></a>
+            <a href="#"><span class="mai-logo-google"></span></a>
+            <a href="#"><span class="mai-logo-linkedin"></span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 py-2">
+        </div>
+        <div class="col-sm-6 py-2 text-right">
+         
+        </div>
+      </div>
+    </div> <!-- .container -->
+    <div class="footer bg-light text-center ">
+    <p>&copy; 2021 <a href="#">HMCode</a> All Rights Reserved</p>
+</div>
+  </footer> <!-- .page-footer -->
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+ <script>
+ 
+      $(document).ready(function() {
+        // messages timeout for 10 sec 
+        setTimeout(function() {
+            $('.message').fadeOut('slow');
+        }, 3000); // <-- time in milliseconds, 1000 =  1 sec
+
+        $('.lone').click(function(){
+        window.location = $(this).attr('href');
+        return false;
+    });
+    });
+
+
+
+// difference de temps
+    function diff_minutes(dt2,dt1){
+
+      var diff = (dt2.getTime()-dt1.getTime())/1000;
+      diff /=60;
+
+      return Math.abs(Math.round(diff));
+
+    }
+    var elementArray = document.getElementsByClassName("fdates");
+
+    for(var i = 0; i < elementArray.length; i++)
+    {
+         var currentDate=new Date();
+        var substractDate=new Date(elementArray[i].textContent);
+         
+   
+    var diffMs = diff_minutes(currentDate,substractDate);
+    
+
+
+  if( diffMs < 1 ){
+      elementArray[i].innerHTML = "Il y a quelque Secondes ";
+  }
+  else if (diffMs >= 1 && diffMs<2){
+    elementArray[i].innerHTML = "Il y a "+diffMs+" minute ";
+  }
+  else if (diffMs >= 2 && diffMs<=59){
+    elementArray[i].innerHTML = "Il y a "+diffMs+" minute(s) ";
+  }
+  else if(diffMs > 59 && diffMs <1440){
+    elementArray[i].innerHTML = "Il y a "+ parseInt(diffMs/60)+" heure(s) ";
+    
+  }
+  else if(diffMs > 1440){
+      var days = Math.floor(diffMs / (60*24));
+      diffMs  -= days*60*24;
+      var hrs   = Math.floor(diffMs / 60);
+      diffMs  -= hrs*60;
+      var mnts = Math.floor(diffMs);
+      diffMs  -= mnts;
+
+      elementArray[i].innerHTML = "Il y a  "+days+" jour(s) ,"+hrs+" heure(s) et "+mnts+" minute(s) ";
+     
+        }
+}   
+
+
+
+
+
+   // var fdate = document.getElementById("fdates").textContent;  //Mon 13 Dec 2021 17:20:00
+    
+  
+ 
+  
+ </script>
+ {% endblock %}
+  </body>
+</html>

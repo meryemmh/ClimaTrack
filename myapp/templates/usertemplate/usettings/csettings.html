@@ -1,0 +1,55 @@
+{% extends 'ubase.html' %}
+{% block style %}
+<style>
+.one{
+    width:516.733px;
+}
+.two{
+    width:216.617px;
+}
+
+</style>
+
+
+{% endblock %}
+{% block body %}
+     {% if messages %}
+<ul class="messages mt-5 text-center">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        <div class="message alert alert-success">
+                <strong> + ( 1 ) {{message}} </strong> 
+                
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="listfridges mt-5 " id="table-wrapper" >
+        <table class="table table-bordered" id="table-head">
+           <thead >
+            <tr>
+                <td class="one">Telegram Token</td>
+                <td class="two">Telegram Reception Id</td>
+                <td>Actions</td>
+            </tr>
+            </thead>
+        </table>
+        <div id="table-wrapper-scroll">
+       
+        <table class="table table-bordered table-hover cursor-pointer">
+            <tbody class="table-wrapper-scroll-y ">
+                {% for i in ss %}
+                    <tr>
+                         <td class="one"> {{ i.telegram_token}}</td>
+                         <td class="two"> {{ i.telegram_reception_id}} </td>
+                         <td><a href="/deletesuppsettings/{{i.id}}">  <button class="btn btn-danger">Delete</button></a></td>
+                       </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         </div>
+    </div>
+
+{% endblock %}
+

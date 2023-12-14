@@ -1,0 +1,52 @@
+{% extends "ubase.html" %}
+
+{% block body %}
+        <div class="logincolonne mt-5">
+        <form class="formlogin mt-5" action="." method="POST">
+        {% csrf_token %}
+        <div class="">
+                <div class="panel panel-default">
+                    <div class="text-primary mb-5"><h3>Add Fridge</h3></div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+                       
+                        <div class="row form-group clearfix">
+                            <label for="{{ fridge_form.nom.id_for_label }}" class="col-md-4 control-label text-right">Fridge Name :</label>
+                            <div class="col-md-6">
+                                {{ fridge_form.nom }}
+                                
+                            </div>
+                        </div>
+                        <div class="row form-group clearfix">
+                            <label for="{{ fridge_form.location.id_for_label }}" class="col-md-4 control-label text-right">Location :</label>
+                            <div class="col-md-6">
+                                {{ fridge_form.location }}
+                               
+                            </div>
+                            <input type="hidden"  name="user" required="" id="id_user" value="{{request.user.id}}"  >
+                        </div>
+
+                </div>
+        </div>     
+        <input type="submit" class="btn btn-success" value="save" />
+        </form>
+        {% if messages %}
+<ul class="messages mt-5 text-center">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        <div class="message alert alert-success">
+                <strong> + ( 1 ) {{message}} </strong> 
+                
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+        </div>
+
+{% endblock %}
+
+
+

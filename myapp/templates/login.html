@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body%}
+
+<div class="container login">
+<div class="row" >
+
+<div class="col-md-4 col-sm-12" ></div>
+<div class="col-md-4 col-sm-12 logincolonne " >
+<h1 class="text-center">Login</h1>
+<form class=" formlogin" action="." method="POST">
+
+{% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="btn btn-primary" >Login</button> &nbsp; <button type="" class="btn btn-primary" ><a class="debouttonregister" href="{% url 'register' %}">Register</a></button>
+</form>
+
+</div>
+<div class="col-md-4 col-sm-12" ></div>
+</div>
+
+</div>
+
+{% endblock %}
+

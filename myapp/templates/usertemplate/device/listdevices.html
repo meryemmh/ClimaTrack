@@ -1,0 +1,85 @@
+{% extends 'ubase.html' %}
+<!---{% now "D d M Y H:i:s" as ct %}--->
+{% block style %}
+<style>
+.one{
+    width:72.05px;
+}
+.two{
+    width:115.417px;
+}
+.three{
+   width:89.733px;
+}
+.four{
+    width:182.05px;
+}
+.five{
+   width:141.367px;
+}
+.six{
+    width:210px;
+}
+</style>
+
+
+{% endblock %}
+{% block body %}
+     {% if messages %}
+<ul class="messages mt-5 text-center">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        <div class="message alert alert-success">
+                <strong> + ( 1 ) {{message}} </strong> 
+                
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="listfridges mt-5 " id="table-wrapper" >
+        <table class="table table-bordered" id="table-head">
+           <thead >
+            <tr class="text-center">
+              
+                <td class="one">Name</td>
+                <td class="two">Location</td>
+                 <td class="three">Created_at</td>
+                <td class="four">Fridge</td>
+           
+                <td class="six">Actions</td>
+           
+                
+            </tr>
+            </thead>
+        </table>
+        <div id="table-wrapper-scroll">
+       
+        <table class="table  table-hover cursor-pointer">
+            <tbody class="table-wrapper-scroll-y ">
+                {% for s in devices %}
+               
+                    <tr class="text-center" >
+                        
+                         <td class="one lone" href="/listassets/{{s.id}}" > {{ s.name }} </td>
+                         <td class="two"> {{ s.location }} </td>
+                          <td class="three"> {{ s.created_at }} </td>
+                          <td class="four"> {{ s.fridge.nom }} </td>
+                 
+                       
+                      
+                        <td class="six"> 
+                        <a href="/editdevice/{{s.id}} " class="text-warning"><button class="btn btn-warning">Edit</button></a> 
+                       <a href="/deletedevice/{{s.id}}">  <button class="btn btn-danger">Delete</button></a>
+                        <a href="/csv " class="text-info"><button class="btn btn-info"> CSV</button></a> 
+                         </td>
+                        
+                     </tr>
+            
+                {% endfor %}
+            </tbody>
+        </table>
+         </div>
+    </div>-
+
+{% endblock %}

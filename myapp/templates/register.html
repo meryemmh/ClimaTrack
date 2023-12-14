@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container register">
+    <div class="row">
+        <div class="col-md-2 col-sm-12"></div>
+        <div class="col-md-8 col-sm-12 logincolonne">
+                <form class=" formlogin" action="." method="POST">
+
+                {% csrf_token %}
+
+
+                <div class="">
+                <div class="panel panel-default">
+                    <div class="text-primary mb-5"><h3>Register</h3></div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+                       
+                        <div class="row form-group clearfix">
+                            <label for="{{ user_form.username.id_for_label }}" class="col-md-4 control-label text-right">Username<span class="text-danger"> *</span>:</label>
+                            <div class="col-md-6">
+                                {{ user_form.username }}
+                            </div>
+                        </div>
+                        <div class="row form-group clearfix">
+                            <label for="{{ user_form.email.id_for_label }}" class="col-md-4 control-label text-right">Email<span class="text-danger"> *</span>:</label>
+                            <div class="col-md-6">
+                                {{ user_form.email }}
+                            </div>
+                        </div>
+                        <div class="row form-group clearfix">
+                            <label for="{{ user_form.password1.id_for_label }}" class="col-md-4 control-label text-right">Password<span class="text-danger"> *</span>:</label>
+                            <div class="col-md-6">
+                                {{ user_form.password1 }}
+                            </div>
+                        </div>
+                        <div class="row form-group clearfix">
+                            <label for="{{ user_form.password2.id_for_label }}" class="col-md-4 control-label text-right">Confirm password<span class="text-danger"> *</span>:</label>
+                            <div class="col-md-6">
+                                {{ user_form.password2 }}
+                            </div>
+                        </div>
+                       
+                        <div class="col-md-12">
+                            <input type="submit" value="Register" class="btn btn-success">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                
+                </form>
+
+        </div>
+        <div class="col-md-2 col-sm-12"></div>
+    </div>
+</div>
+{% endblock %}
+
+

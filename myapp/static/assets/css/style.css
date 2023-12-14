@@ -1,0 +1,163 @@
+.mynavbar{
+  position: fixed !important;
+  top: 0px !important;
+}
+
+.navbar-float{
+  top: 0px !important;
+}
+
+.darkbtn{
+  padding-left: 6px;
+}
+.footer{
+  color: #6C55F9;
+  height: 50px;
+  padding: 5%;
+}
+
+.carousel-control-prev{
+  background-color: transparent;
+  border: 0px;
+}
+
+.carousel-control-next{
+  background-color: transparent;
+  border: 0px;
+}
+
+.mainimg{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url("../img/main.jpg");
+}
+.empty{
+  height: 500px;
+}
+
+.username{
+  color: #6C55F9 ;
+  font-weight: bolder;
+  
+}
+
+.login{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.register{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.logincolonne{
+  background-color: white;
+  padding: 45px;
+  border: 1px solid #D7D5E9;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 0px;
+}
+
+.formlogin{
+  text-align: center;
+}
+.debouttonregister{
+  color: white;
+  text-decoration: none;
+}
+
+.debouttonregister:hover{
+  color: white;
+  text-decoration: none;
+}
+
+.contentu{
+  margin-top: 70px;
+  margin-bottom: 70px;
+  height: 1000px;
+}
+
+.sidenav{
+  color: #6C55F9;
+  padding-left: 0px !important;
+  height: 100%;
+  background-color: white;
+  padding-right: 0px !important;
+  border-top-right-radius: 5px;
+  position: fixed !important;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  margin-top: 74px;
+  margin-right: 5%;
+
+}
+.leftnav{
+  margin-left: 25%;
+}
+.barrtop{
+  background-color: #6C55F9;
+  color: white;
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  position: fixed !important;
+  z-index: 1030 !important;
+
+}
+
+.l{
+  color: #6C55F9 !important; 
+  padding-left: 45px !important;
+}
+
+.lheader{
+  font-weight: bold;
+}
+
+.messages{
+  list-style: none;
+}
+
+.listfridges{
+  background-color: white;
+  
+}
+#table-wrapper {
+  
+  height: 500px;
+  background: #f3f3f3;
+  position: relative;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+#table-wrapper-scroll{
+  height: 100%;
+  overflow: scroll;
+}
+#table-head {
+ 
+  width: 100%;
+  color: #6C55F9;
+  background: #fff;
+  
+  
+  position: absolute;
+  top: 0;
+}
+#table-wrapper-scroll > table{
+  
+  margin-top: 20px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+

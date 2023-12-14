@@ -1,0 +1,101 @@
+{% extends 'ubase.html' %}
+<!---{% now "D d M Y H:i:s" as ct %}--->
+{% block style %}
+<style>
+.one{
+    width:72.05px;
+}
+.two{
+    width:115.417px;
+}
+.three{
+   width:89.733px;
+}
+.four{
+    width:182.05px;
+}
+.five{
+   width:141.367px;
+}
+.six{
+    width:202.017px;
+}
+
+
+.normaltemp{
+  background-color : rgb(0, 199, 201);
+  color:white;
+  font-size:25px;
+  text-align:center;
+  padding:auto;
+}
+</style>
+
+
+{% endblock %}
+{% block body %}
+ 
+     {% if messages %}
+<ul class="messages mt-5 text-center">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        <div class="message alert alert-danger">
+                <strong> + ( 1 ) {{message}} </strong> 
+                
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+  <div class="col-md-12 col-sm-12 normaltemp">
+    {% for i in assets|slice:"1" %} 
+        <p style="margin-bottom: 5px;"> Normal Temperature Between {{i.asset.min_critical_telemetry}}  (°C)  and {{i.asset.max_critical_telemetry}} (°C) </p>
+         {% endfor %}
+    </div>
+    <div class="listfridges mt-5 " id="table-wrapper" >
+        <table class="table table-bordered" id="table-head">
+           <thead >
+            <tr class="text-center">
+              
+                <td class="two">Last Releaved Temperature</td>
+                <td class="three">Last Releaved Humidity</td>
+                <td class="four">Last Date Updated</td>
+
+           
+           
+                
+            </tr>
+            </thead>
+        </table>
+        <div id="table-wrapper-scroll">
+       
+        <table class="table  table-hover cursor-pointer">
+            <tbody class="table-wrapper-scroll-y ">
+                {% for i in assets|slice:"1" %}
+                
+                    <tr class="text-center 
+                     {% if i.temp < i.asset.min_severe_telemetry %} bg-danger 
+                     {% elif i.temp < i.asset.min_critical_telemetry %} bg-warning
+                     {% elif i.temp > i.asset.max_severe_telemetry %} bg-danger 
+                     {% elif i.temp > i.asset.max_critical_telemetry %} bg-warning 
+                     
+                     {% else %} bg-success {% endif %}
+                    " 
+                    
+                    
+                    >
+                         
+                         <td class="two lone" href="/myGraph/{{i.asset.id}}"> {{ i.temp }}  </td>
+                         <td class="three"> {{ i.hum }}  </td>
+                         <td class="four fdates" > {{i.dt|date:"D d M Y H:i:s"}}  </td>
+                   
+                     
+                        
+                     </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         </div>
+    </div>-
+
+{% endblock %}

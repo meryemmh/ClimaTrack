@@ -1,0 +1,33 @@
+{% extends "ubase.html" %}
+
+{% block body %}
+        <div class="logincolonne mt-5">
+        <form class="formlogin mt-5" action="." method="POST">
+        {% csrf_token %}
+        <div class="">
+                <div class="panel panel-default">
+                    <div class="text-primary mb-5"><h3>Add Device</h3></div>
+                   {{device_form.as_p}}
+
+                </div>
+        </div>     
+        <input type="submit" class="btn btn-success" value="save" />
+        </form>
+        {% if messages %}
+<ul class="messages mt-5 text-center">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        <div class="message alert alert-success">
+                <strong> + ( 1 ) {{message}} </strong> 
+                
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+        </div>
+
+{% endblock %}
+
+
+
